@@ -1,0 +1,65 @@
+<!-- Using a 3rd party library for the components -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/figma-plugin-ds.css"
+/>
+
+<!-- Styling -->
+<style>
+  div {
+    margin: 20px;
+  }
+
+  label {
+    font-size: 0.7em;
+  }
+</style>
+
+<!-- UI -->
+<!-- Form -->
+<div>
+  <!-- Themes menu -->
+  <select id="theme" class="select-menu">
+    <option value="Theme 1">Theme 1</option>
+    <option value="Theme 2">Theme 2</option>
+  </select>
+
+  <!-- name -->
+  <div class="input">
+    <label for="filename">Name*</label>
+    <input
+      id="filename"
+      type="input"
+      class="input__field"
+      placeholder="Payments"
+    />
+  </div>
+
+  <div class="input">
+    <label for="jiraNumber">Jira number (optional)</label>
+    <input
+      id="number"
+      type="input"
+      class="input__field"
+      placeholder="DT-1000"
+    />
+  </div>
+
+  <!-- Submits the form -->
+  <div>
+    <button id="generate" class="button button--primary">Generate</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/iife/figma-plugin-ds.js"></script>
+<script>
+  selectMenu.init(); //initiates the select menu component
+  disclosure.init(); //initiates the disclosure component
+
+  document.getElementById("generate").onclick = () => {
+    const theme = document.getElementById("theme").value;
+    const filename = document.getElementById("filename").value;
+    const number = document.getElementById("number").value;
+    parent.postMessage({ pluginMessage: { theme, filename, number } }, "*");
+  };
+</script>
