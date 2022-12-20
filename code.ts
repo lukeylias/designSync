@@ -19,13 +19,6 @@ const PAGES: Page[] = [
   },
   {
     pageName: "Cover",
-    componentKey: null,
-  },
-];
-
-const THEMES: Theme[] = [
-  {
-    name: "Theme",
     componentKey: "7490b9dd58f1e467c94154bd8ee56aa40add6363",
   },
 ];
@@ -43,17 +36,16 @@ figma.ui.onmessage = (pluginMessage) => {
 
     // Get the theme from the message
     const theme = pluginMessage.theme;
+    console.log(theme);
 
     // Get the filename from the message
     filename = pluginMessage.filename;
+    console.log(filename);
 
     // Get the filename from the message
     number = pluginMessage.number;
+    console.log(number);
 
-    // Set the component key for the Cover page to the single theme
-    PAGES[1].componentKey = THEMES[0].componentKey;
-
-    // figma.setFileThumbnailNodeAsync(theme);
     for (const pageData of PAGES.slice(1)) {
       const newPage = figma.createPage();
       newPage.name = pageData.pageName;
@@ -73,27 +65,6 @@ figma.ui.onmessage = (pluginMessage) => {
 
           // Zoom to fit in view
           figma.viewport.scrollAndZoomIntoView([templateInstance]);
-
-          // Re-get the templateInstance
-          const frameRef = newPage.children[0];
-
-          // Insert the theme component into the page
-          const matchingTheme = THEMES[0];
-          // Define and assign the matchingTheme variable here
-          if (typeof matchingTheme.componentKey === "string") {
-            // Only call the importComponentByKeyAsync function if componentKey is a string
-            const themeInstance = await figma.importComponentByKeyAsync(
-              matchingTheme.componentKey
-            );
-
-            newPage.appendChild(themeInstance);
-
-            // Set the file thumbnail
-            figma.setFileThumbnailNodeAsync(themeInstance);
-
-            // Remove the tmp frameRef
-            frameRef.remove();
-          }
         }
       }
     }
@@ -104,14 +75,4 @@ figma.ui.onmessage = (pluginMessage) => {
 
   // Run the function
   run();
-
-  // Find the page called "Cover"
-  const coverPage = figma.root.findOne(
-    (node) => node.name === "Cover" && node.type === "PAGE"
-  ) as FrameNode;
-  if (coverPage) {
-    console.log(coverPage.name);
-    console.log(filename);
-    console.log(number);
-  }
 };
