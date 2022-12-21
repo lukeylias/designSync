@@ -40,43 +40,25 @@ figma.ui.onmessage = (pluginMessage) => {
         const textNode = figma.createText();
 
         // Set the text of the first text node
-        textNode.characters = number;
+        textNode.characters = filename;
+
+        // Set the maximum width of the text node to 1400 pixels
+        textNode.resize(1400, textNode.height);
 
         // Set the font and styles of the first text node
         textNode.fontName = { family: "Inter", style: "Regular" };
-        textNode.fontSize = 80;
+        textNode.fontSize = 128;
 
         // Position the first text node
         textNode.x = 100;
-        textNode.y = 386;
+        textNode.y = 430;
 
-        // Create a second text node
-        const numberTextNode = figma.createText();
-
-        // Set the text of the second text node
-        numberTextNode.characters = filename;
-
-        // Set the font and styles of the second text node
-        numberTextNode.fontName = { family: "Inter", style: "Regular" };
-        numberTextNode.fontSize = 128;
-
-        // Position the second text node below the first one
-        numberTextNode.x = 100;
-        numberTextNode.y = textNode.y + textNode.height + 10;
-
-        // Create a frame around the text nodes
+        // Create a frame around the text node
         const frame = figma.createFrame();
         frame.resize(1600, 1015);
 
-        // Add the text nodes to the frame
+        // Add the first text node to the frame
         frame.appendChild(textNode);
-        frame.appendChild(numberTextNode);
-
-        // Add the frame to the page
-        newPage.insertChild(0, frame);
-
-        // Add the frame to the page
-        newPage.insertChild(0, frame);
 
         // Set the frame as the thumbnail for the page
         figma.setFileThumbnailNodeAsync(frame);
