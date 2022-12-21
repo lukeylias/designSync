@@ -25,6 +25,7 @@ const PAGES: Page[] = [
 figma.ui.onmessage = (pluginMessage) => {
   const filename = pluginMessage.filename;
   const number = pluginMessage.number;
+  const theme = pluginMessage.theme;
 
   const run = async () => {
     const currentPage = figma.currentPage;
@@ -37,35 +38,46 @@ figma.ui.onmessage = (pluginMessage) => {
         // Load the font
         await figma.loadFontAsync({ family: "Inter", style: "Regular" });
 
-        const textNode = figma.createText();
+        // Create a new text node for the theme
+        const themeTextNode = figma.createText();
+        themeTextNode.characters = theme;
+        themeTextNode.fontName = { family: "Inter", style: "Regular" };
+        themeTextNode.fontSize = 32;
+        themeTextNode.x = 100;
+        themeTextNode.y = 120;
 
-        let characters = "";
+        currentPage.appendChild(themeTextNode);
 
+        const numberTextNode = figma.createText();
         if (number !== null) {
-          characters += number + "\n";
+          numberTextNode.characters = number;
+          numberTextNode.fontName = { family: "Inter", style: "Regular" };
+          numberTextNode.fontSize = 80;
+          numberTextNode.x = 100;
+          numberTextNode.y = 382;
+
+          currentPage.appendChild(numberTextNode);
         }
 
-        characters += filename;
+        const filenameTextNode = figma.createText();
+        filenameTextNode.characters = filename;
+        filenameTextNode.fontName = { family: "Inter", style: "Regular" };
+        filenameTextNode.fontSize = 128;
+        filenameTextNode.x = 100;
+        filenameTextNode.y = 479;
 
-        textNode.characters = characters;
+        currentPage.appendChild(filenameTextNode);
 
-        // Set the maximum width of the text node to 1400 pixels
-        textNode.resize(1400, textNode.height);
-
-        // Set the font and styles of the first text node
-        textNode.fontName = { family: "Inter", style: "Regular" };
-        textNode.fontSize = 128;
-
-        // Position the first text node
-        textNode.x = 100;
-        textNode.y = 430;
-
-        // Create a frame around the text node
+        // Create a frame around the text nodes
         const frame = figma.createFrame();
         frame.resize(1600, 1015);
 
-        // Add the first text node to the frame
-        frame.appendChild(textNode);
+        // Add the text nodes to the frame
+        frame.appendChild(themeTextNode);
+        if (number !== null) {
+          frame.appendChild(numberTextNode);
+        }
+        frame.appendChild(filenameTextNode);
 
         // Set the frame as the thumbnail for the page
         figma.setFileThumbnailNodeAsync(frame);
