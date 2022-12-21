@@ -52,16 +52,31 @@ figma.ui.onmessage = (pluginMessage) => {
       if (pageData.componentKey) {
         if (typeof pageData.componentKey === "string") {
           // Only call the importComponentByKeyAsync function if componentKey is a string
+
           const template = await figma.importComponentByKeyAsync(
             pageData.componentKey
           );
+
           const templateInstance = template.createInstance();
 
-          // Add the template to the page
-          newPage.insertChild(0, templateInstance);
+          // Create a new frame
 
-          // Detach instance
-          templateInstance.detachInstance();
+          const frame = figma.createFrame();
+
+          // // Set the name of the frame to "coverFrame"
+          // frame.name = "test";
+
+          // Insert the template instance into the frame
+          frame.insertChild(0, templateInstance);
+
+          // Resize the frame to fit the component instance
+          frame.resize(templateInstance.width, templateInstance.height);
+
+          // Set the frame as the thumbnail for the page
+          figma.setFileThumbnailNodeAsync(frame);
+
+          // Add the frame to the page
+          newPage.insertChild(0, frame);
 
           // Zoom to fit in view
           figma.viewport.scrollAndZoomIntoView([templateInstance]);
