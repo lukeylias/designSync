@@ -39,8 +39,15 @@ figma.ui.onmessage = (pluginMessage) => {
 
         const textNode = figma.createText();
 
-        // Set the text of the first text node
-        textNode.characters = filename;
+        let characters = "";
+
+        if (number !== null) {
+          characters += number + "\n";
+        }
+
+        characters += filename;
+
+        textNode.characters = characters;
 
         // Set the maximum width of the text node to 1400 pixels
         textNode.resize(1400, textNode.height);
