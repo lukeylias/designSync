@@ -23,6 +23,9 @@ const PAGES: Page[] = [
 ];
 
 figma.ui.onmessage = (pluginMessage) => {
+  const filename = pluginMessage.filename;
+  const number = pluginMessage.number;
+
   const run = async () => {
     const currentPage = figma.currentPage;
     currentPage.name = PAGES[0].pageName;
@@ -37,7 +40,15 @@ figma.ui.onmessage = (pluginMessage) => {
         const textNode = figma.createText();
 
         // Set the text of the text node
-        textNode.characters = "file";
+        textNode.characters = filename;
+
+        // Set the font and styles of the text node
+        textNode.fontName = { family: "Inter", style: "Regular" };
+        textNode.fontSize = 80;
+
+        // Position the text node
+        textNode.x = 100;
+        textNode.y = 386;
 
         // Create a frame around the text node
         const frame = figma.createFrame();
