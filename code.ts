@@ -63,6 +63,7 @@ figma.ui.onmessage = (pluginMessage) => {
         filenameTextNode.characters = filename;
         filenameTextNode.fontName = { family: "Inter", style: "Regular" };
         filenameTextNode.fontSize = 128;
+        filenameTextNode.resize(1400, filenameTextNode.height);
         filenameTextNode.x = 100;
         filenameTextNode.y = 479;
 
