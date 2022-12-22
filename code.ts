@@ -72,6 +72,7 @@ figma.ui.onmessage = (pluginMessage) => {
         // Create a frame around the text nodes
         const frame = figma.createFrame();
         frame.resize(1600, 1015);
+        frame.name = "Cover";
 
         // Add the text nodes to the frame
         frame.appendChild(themeTextNode);
