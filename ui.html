@@ -16,7 +16,7 @@
     cursor: pointer;
   }
   .primary-button:hover {
-    background-color: rgba(31, 81, 153, 1);;
+    background-color: rgba(31, 81, 153, 1);
   }
 
   .secondary-button {
@@ -36,7 +36,7 @@
 <!-- Form -->
 <div>
   <!-- Themes menu -->
-  <label for="theme">Theme*</label>
+  <label for="theme" style="margin-left: 10px">Theme*</label>
   <select id="theme" class="select-menu">
     <option value="Accessibility and Inclusion">
       Accessibility and Inclusion
@@ -59,7 +59,9 @@
 
   <!-- name -->
   <div class="input">
-    <label for="filename">Name*</label>
+    <label for="filename" style="display: block; padding-bottom: 8px"
+      >Name*</label
+    >
     <input
       id="filename"
       type="input"
@@ -69,11 +71,14 @@
   </div>
 
   <div class="input">
-    <label for="jiraNumber">Jira number (optional)</label>
+    <label for="jiraNumber" style="display: block; padding-bottom: 8px"
+      >Jira number (optional)</label
+    >
     <input
       id="number"
       type="input"
       class="input__field"
+      style="width: 50%"
       placeholder="DT-1000"
     />
   </div>
