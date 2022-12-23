@@ -1,6 +1,6 @@
 figma.showUI(__html__);
 
-figma.ui.resize(340, 300);
+figma.ui.resize(320, 300);
 
 interface Page {
   pageName: string;
@@ -85,6 +85,7 @@ figma.ui.onmessage = (pluginMessage) => {
       if (pageData.pageName === "Cover") {
         // Load the font
         await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+        await figma.loadFontAsync({ family: "Inter", style: "Bold" });
 
         // Create a new text node for the theme
         const themeTextNode = figma.createText();
@@ -109,7 +110,7 @@ figma.ui.onmessage = (pluginMessage) => {
 
         const filenameTextNode = figma.createText();
         filenameTextNode.characters = filename;
-        filenameTextNode.fontName = { family: "Inter", style: "Regular" };
+        filenameTextNode.fontName = { family: "Inter", style: "Bold" };
         filenameTextNode.fontSize = 128;
         filenameTextNode.resize(1400, filenameTextNode.height);
         filenameTextNode.x = 100;
