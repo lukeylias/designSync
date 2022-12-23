@@ -7,7 +7,23 @@
 <!-- Styling -->
 <style>
   div {
-    margin: 20px;
+    margin: 10px;
+    align-items: center;
+  }
+
+  .primary-button {
+    background-color: rgba(44, 110, 203, 1);
+  }
+  button:hover {
+    background-color: rgba(31, 81, 153, 1);
+    cursor: pointer;
+  }
+
+  .secondary-button {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  .secondary-button:hover {
+    background-color: rgba(246, 246, 247, 1);
   }
 
   label {
@@ -19,6 +35,7 @@
 <!-- Form -->
 <div>
   <!-- Themes menu -->
+  <label for="theme">Theme*</label>
   <select id="theme" class="select-menu">
     <option value="Accessibility and Inclusion">
       Accessibility and Inclusion
@@ -61,8 +78,28 @@
   </div>
 
   <!-- Submits the form -->
-  <div>
-    <button id="generate" class="button button--primary">Generate</button>
+  <div
+    style="
+      display: flex;
+      float: right;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding-bottom: 8px;
+    "
+  >
+    <!--Help button-->
+    <button id="help" class="button button--secondary secondary-button">
+      Help
+    </button>
+    <!--Next button-->
+    <button
+      id="generate"
+      class="button button--primary primary-button"
+      style="margin-left: 10px; float: right"
+    >
+      Next
+    </button>
   </div>
 </div>
 
