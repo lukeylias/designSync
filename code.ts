@@ -10,12 +10,28 @@ interface Page {
 // pages we will generate and associated component keys (component keys are how we get Figma components)
 const PAGES: Page[] = [
   {
-    pageName: "Page 1",
+    pageName: "🏖 Sandbox",
     componentKey: null,
   },
   {
-    pageName: "Page 2",
-    componentKey: "7490b9dd58f1e467c94154bd8ee56aa40add6363",
+    pageName: "💀 Archive",
+    componentKey: null,
+  },
+  {
+    pageName: "–––––",
+    componentKey: null,
+  },
+  {
+    pageName: "↪️ Developer Handoff",
+    componentKey: "07c76dbfb1d4c259f757fae81ebe43c1ac6a8f1e",
+  },
+  {
+    pageName: "–––––",
+    componentKey: null,
+  },
+  {
+    pageName: "🧩 File Components",
+    componentKey: "3c6a06413cb26c37032bd26503e055da754064c1",
   },
   {
     pageName: "Cover",
