@@ -114,10 +114,16 @@
   selectMenu.init(); //initiates the select menu component
   disclosure.init(); //initiates the disclosure component
 
-  document.getElementById("generate").onclick = () => {
-    const theme = document.getElementById("theme").value;
-    const filename = document.getElementById("filename").value;
-    const number = document.getElementById("number").value;
-    parent.postMessage({ pluginMessage: { theme, filename, number } }, "*");
+  document.getElementById("generate").onclick = function (event) {
+    const inputValue = document.getElementById("filename").value;
+    if (inputValue === "") {
+      event.preventDefault();
+      alert("Please enter a value for the Name field");
+    } else {
+      const theme = document.getElementById("theme").value;
+      const filename = document.getElementById("filename").value;
+      const number = document.getElementById("number").value;
+      parent.postMessage({ pluginMessage: { theme, filename, number } }, "*");
+    }
   };
 </script>
