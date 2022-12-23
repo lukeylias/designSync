@@ -1,6 +1,6 @@
 figma.showUI(__html__);
 
-figma.ui.resize(300, 280);
+figma.ui.resize(340, 300);
 
 interface Page {
   pageName: string;
@@ -26,11 +26,47 @@ const PAGES: Page[] = [
 const themeColors = [
   {
     name: "Accessibility and Inclusion",
-    color: "#0000FF",
+    color: "#D1FADF",
+  },
+  {
+    name: "Onboarding",
+    color: "#FEE4E2",
+  },
+  {
+    name: "Dashboard and Navigation",
+    color: "#F6F8F9",
+  },
+  {
+    name: "Moving Money",
+    color: "#FEF0C7",
   },
   {
     name: "Cards and wallets",
-    color: "#00FF00",
+    color: "#E0F2FE",
+  },
+  {
+    name: "Choosing and setting up products",
+    color: "#FBE8FF",
+  },
+  {
+    name: "View and use banking products",
+    color: "#FEF7C3",
+  },
+  {
+    name: "Messaging and Alerts",
+    color: "#E6F4D7",
+  },
+  {
+    name: "Security and Access",
+    color: "#FECDCA",
+  },
+  {
+    name: "Open Banking",
+    color: "#F4F4D5",
+  },
+  {
+    name: "Customer Information",
+    color: "#ECE9FE",
   },
 ];
 
