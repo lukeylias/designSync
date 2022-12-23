@@ -7,6 +7,7 @@ interface Page {
   componentKey: string | null;
 }
 
+// pages we will generate and associated component keys (component keys are how we get Figma components)
 const PAGES: Page[] = [
   {
     pageName: "Page 1",
@@ -19,6 +20,17 @@ const PAGES: Page[] = [
   {
     pageName: "Cover",
     componentKey: null,
+  },
+];
+
+const themeColors = [
+  {
+    name: "Accessibility and Inclusion",
+    color: "#0000FF",
+  },
+  {
+    name: "Cards and wallets",
+    color: "#00FF00",
   },
 ];
 
@@ -74,6 +86,20 @@ figma.ui.onmessage = (pluginMessage) => {
         frame.resize(1600, 1015);
         frame.name = "Cover";
 
+        // Set the frame color based on the theme selected by the user
+        if (theme) {
+          const themeColor = themeColors.find((color) => color.name === theme);
+          if (themeColor) {
+            // Create a solid color object with the color specified in the themeColors array
+            const colorHex = themeColor.color.replace("#", "");
+            const r = parseInt(colorHex.substr(0, 2), 16) / 255;
+            const g = parseInt(colorHex.substr(2, 2), 16) / 255;
+            const b = parseInt(colorHex.substr(4, 2), 16) / 255;
+            const solidColor = { r, g, b };
+            frame.fills = [{ type: "SOLID", color: solidColor }];
+          }
+        }
+
         // Add the text nodes to the frame
         frame.appendChild(themeTextNode);
         if (number !== null) {
@@ -89,7 +115,6 @@ figma.ui.onmessage = (pluginMessage) => {
       } else if (pageData.componentKey) {
         if (typeof pageData.componentKey === "string") {
           // Only call the importComponentByKeyAsync function if componentKey is a string
-
           const template = await figma.importComponentByKeyAsync(
             pageData.componentKey
           );
