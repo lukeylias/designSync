@@ -23,7 +23,7 @@ const PAGES: Page[] = [
   },
   {
     pageName: "↪️ Developer Handoff",
-    componentKey: "07c76dbfb1d4c259f757fae81ebe43c1ac6a8f1e",
+    componentKey: "4fbbf1f91c4af9aa79818964d03c2a6920ce9b66",
   },
   {
     pageName: "–––––",
