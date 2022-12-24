@@ -176,6 +176,12 @@ figma.ui.onmessage = (pluginMessage) => {
 
           // Add the template instance to the page
           newPage.insertChild(0, templateInstance);
+
+          // Detach instance
+          templateInstance.detachInstance();
+
+          // Zoom to fit the template in view
+          figma.viewport.scrollAndZoomIntoView([templateInstance]);
         }
       }
     }
