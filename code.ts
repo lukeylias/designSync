@@ -188,7 +188,7 @@ figma.ui.onmessage = (pluginMessage) => {
   };
 
   // Notify the user
-  figma.notify("🎉 Pages created");
+  figma.notify("Pages created, now move file 👆");
 
   // Run the function
   run();
