@@ -15,13 +15,8 @@ Essenitally this means we will automate as much as we can and help guide the use
 
 ## To-do
 – Close button to work
-
-– Touch area for copying to clipboard
-
 - Better styling for the UI
-
 - Enhancments to the HTML after pages are generated
-
 - Overall improvements
 
 
