@@ -9,6 +9,7 @@
   div {
     margin: 10px;
     align-items: left;
+    /* padding-top: 8px; */
   }
 
   .primary-button {
@@ -31,17 +32,23 @@
   }
 
   label {
-    font-size: 0.7em;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: semi-bold;
+    color: #000;
   }
   #display-theme {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: regular;
     padding: 2px;
     border-radius: 2px;
     border: 1px solid #e4e8eb;
     text-align: center;
+    cursor: pointer;
   }
+  #display-theme:hover {
+    background-color: rgba(246, 246, 247, 1);
+  }
+
   .instructions {
     font-size: 12px;
     font-weight: medium;
@@ -52,7 +59,7 @@
 </style>
 
 <!-- UI 1/3 -->
-<div id="step-1">
+<div style="padding-top: 8px" id="step-1">
   <!-- Themes menu -->
   <label for="theme" style="margin-left: 10px">Theme</label>
   <select id="theme" class="select-menu">
@@ -123,24 +130,22 @@
   </div>
 </div>
 <!-- UI 2/3 Move theme -->
-<div id="step-2" style="display: none">
+<div id="step-2" style="display: none; padding-top: 8px">
   <!-- Theme -->
-  <label style="margin-left: 10px">Move the file to the following theme:</label>
+  <label style="margin-left: 10px">Copy theme</label>
   <!-- Display the theme value -->
 
   <div id="display-theme">
     <div id="theme-value"></div>
   </div>
   <div class="instructions">
-    <p>To do this:</p>
-    <ol>
-      <li>Copy the theme from above</li>
-      <li>Click the down arrow at the top of the file</li>
-      <li>Click “Move to project…”</li>
-      <li>Paste (CTRL + V) into search</li>
-      <li>Select the matching theme and hit “Move”</li>
-    </ol>
-    <p>Once done, click "Next"</p>
+    <p>
+      1. Copy the theme name above </br> 
+      2. Click the down arrow at the top of the screen</br> 
+      3. "move to project..."</br> 
+4. Search for the theme and move it</br> 
+5. Once moved, click "Next"
+    </p>
   </div>
 
   <!-- Submits the form -->
@@ -169,6 +174,25 @@
 <script>
   selectMenu.init(); //initiates the select menu component
   disclosure.init(); //initiates the disclosure component
+
+  document.getElementById("theme-value").onclick = function () {
+    // create a temporary input element
+    let input = document.createElement("input");
+    // get the value of the theme-value element
+    let value = document.getElementById("theme-value").innerHTML;
+    // set the value of the input element to the value of the theme-value element
+    input.setAttribute("value", value);
+    // append the input element to the body
+    document.body.appendChild(input);
+    // select the input element
+    input.select();
+    // copy the selected text to the clipboard
+    document.execCommand("copy");
+    // remove the input element from the body
+    document.body.removeChild(input);
+    // show a message to the user
+    alert("Copied to clipboard: " + value);
+  };
 
   document.getElementById("generate").onclick = function (event) {
     const inputValue = document.getElementById("filename").value;
