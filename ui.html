@@ -14,19 +14,20 @@
   .section-title{
     font-size: 16px;
     font-weight: semi-bold;
-    color: #202223;
+    color: #002F19;
   }
 
   .primary-button {
-    background-color: rgba(44, 110, 203, 1);
+    background-color: rgba(0, 128, 96, 1);
     cursor: pointer;
   }
   .primary-button:hover {
-    background-color: rgba(31, 81, 153, 1);
+    background-color: rgba(0, 110, 82, 1);
   }
 
   .secondary-button {
     background-color: rgba(255, 255, 255, 1);
+    border: 1px solid #e4e8eb;
     cursor: pointer;
   }
   .secondary-button:hover {
@@ -38,8 +39,8 @@
 
   label {
     font-size: 12px;
-    font-weight: semi-bold;
-    color: #202223;
+    font-weight: 700;
+    color: #002F19;
   }
   #display-theme {
     font-size: 12px;
@@ -47,7 +48,7 @@
     padding: 2px;
     border-radius: 2px;
     border: 1px solid #e4e8eb;
-    text-align: center;
+    text-align: left;
     cursor: pointer;
 ;
   }
@@ -61,7 +62,7 @@
     padding: 2px;
     border-radius: 2px;
     border: 1px solid #e4e8eb;
-    text-align: center;
+    text-align: left;
     cursor: pointer;
   }
   #display-filename:hover {
@@ -81,10 +82,9 @@
 <div id="step-1">
   <!-- Themes menu -->
   <!-- Section title -->
-  <div style="margin-left: 0;" class="section-title">Select theme</div>
+  <div style="margin-left: 0;" class="section-title">File details</div>
   <label for="theme" style="margin-left: 10px">Theme</label>
   <select id="theme" class="select-menu">
-    <option>Please make a selection</option>
     <option value="Accessibility and Inclusion">
       Accessibility and Inclusion
     </option>
@@ -105,7 +105,6 @@
   </select>
 
   <!-- name -->
-  <div style="margin-left: 0;" class="section-title">Enter filename and ticket number</div>
   <div class="input">
     <label for="filename" style="display: block; padding-bottom: 8px"
       >Filename*</label
@@ -229,6 +228,13 @@ You can close this window.
     "
   >
   <a href="https://zeroheight.com/" target="_blank"><button class="button button--secondary secondary-button">Help</button></a>
+  <button
+      id="generate"
+      class="button button--primary primary-button"
+      style="margin-left: 10px; float: right"
+    >
+      Close
+    </button>
   </div>
 </div>
 
