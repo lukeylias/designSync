@@ -13,13 +13,16 @@ Also, we can't move files. So again, the user has to manually move the file to t
 Essenitally this means we will automate as much as we can and help guide the user to rename and move their file.
 
 
-## Roadmap
+## To-do
+– Close button to work
+
+– Touch area for copying to clipboard
 
 - Better styling for the UI
 
 - Enhancments to the HTML after pages are generated
 
-- Help button or link
+- Overall improvements
 
 
 ## How it works
