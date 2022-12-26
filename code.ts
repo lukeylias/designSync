@@ -1,6 +1,6 @@
 figma.showUI(__html__);
 
-figma.ui.resize(320, 340);
+figma.ui.resize(320, 360);
 
 interface Page {
   pageName: string;

@@ -11,6 +11,11 @@
     align-items: left;
     /* padding-top: 8px; */
   }
+  .section-title{
+    font-size: 14px;
+    font-weight: semi-bold;
+    color: #1F2A44;
+  }
 
   .primary-button {
     background-color: rgba(44, 110, 203, 1);
@@ -27,14 +32,14 @@
   .secondary-button:hover {
     background-color: rgba(246, 246, 247, 1);
   }
-  ol {
-    padding-left: 20px; /* adjust the value to your desired indentation */
-  }
+  a {
+  text-decoration: none;
+}
 
   label {
     font-size: 13px;
     font-weight: semi-bold;
-    color: #000;
+    color: #3E414C;
   }
   #display-theme {
     font-size: 12px;
@@ -44,11 +49,24 @@
     border: 1px solid #e4e8eb;
     text-align: center;
     cursor: pointer;
+;
   }
   #display-theme:hover {
     background-color: rgba(246, 246, 247, 1);
+;
   }
-
+  #display-filename {
+    font-size: 12px;
+    font-weight: regular;
+    padding: 2px;
+    border-radius: 2px;
+    border: 1px solid #e4e8eb;
+    text-align: center;
+    cursor: pointer;
+  }
+  #display-filename:hover {
+    background-color: rgba(246, 246, 247, 1);
+  }
   .instructions {
     font-size: 12px;
     font-weight: medium;
@@ -59,10 +77,13 @@
 </style>
 
 <!-- UI 1/3 -->
-<div style="padding-top: 8px" id="step-1">
+
+<div id="step-1">
   <!-- Themes menu -->
+  <!-- Section title -->
+  <div style="margin-left: 0;" class="section-title">Select theme</div>
   <label for="theme" style="margin-left: 10px">Theme</label>
-  <select id="theme" class="select-menu">
+  <select id="theme" class="select-menu" style="box-shadow:  0 0 0 1px rgba(6, 44, 82, 0.1), 0 2px 16px rgba(33, 43, 54, 0.08);">
     <option value="Accessibility and Inclusion">
       Accessibility and Inclusion
     </option>
@@ -83,6 +104,7 @@
   </select>
 
   <!-- name -->
+  <div style="margin-left: 0;" class="section-title">Enter filename and ticket number</div>
   <div class="input">
     <label for="filename" style="display: block; padding-bottom: 8px"
       >Filename*</label
@@ -119,6 +141,7 @@
       padding-bottom: 8px;
     "
   >
+  <a href="https://zeroheight.com/" target="_blank"><button class="button button--secondary secondary-button">Help</button></a>
     <!--Next button-->
     <button
       id="generate"
@@ -130,9 +153,10 @@
   </div>
 </div>
 <!-- UI 2/3 Move theme -->
-<div id="step-2" style="display: none; padding-top: 8px">
+<div id="step-2" style="display: none">
   <!-- Theme -->
-  <label style="margin-left: 10px">Copy theme</label>
+  <div style="margin-left: 0;" class="section-title">Move file to correct theme</div>
+  <label style="margin-left: 10px">Theme</label>
   <!-- Display the theme value -->
 
   <div id="display-theme">
@@ -159,14 +183,51 @@
       padding-bottom: 8px;
     "
   >
+  <a href="https://zeroheight.com/" target="_blank"><button class="button button--secondary secondary-button">Help</button></a>
     <!--Next button-->
     <button
-      id="Next"
+      id="next-button-2"
       class="button button--primary primary-button"
       style="margin-left: 10px; float: right"
     >
       Next
     </button>
+  </div>
+</div>
+<!-- UI 3/3 Rename file -->
+<div id="step-3" style="display: none;"">
+  <div style="margin-left: 0;" class="section-title">Rename your file</div>
+  <!-- Theme -->
+  <label style="margin-left: 10px">Filename</label>
+  <!-- Display the theme value -->
+
+  <div id="display-filename">
+    <div id="filename-value"></div>
+  </div>
+  <div class="instructions">
+    <p>
+1. Copy the filename from above</br> 
+2. Click the down arrow at the top of the file</br> 
+3. Click “Rename”</br> 
+4. Paste (CTRL + V) filename</br> 
+5. Enter to save</br> 
+Great job, your all done 🎉</br> 
+You can close this window.
+    </p>
+  </div>
+
+  <!-- Submits the form -->
+  <div
+    style="
+      display: flex;
+      float: right;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding-bottom: 8px;
+    "
+  >
+  <a href="https://zeroheight.com/" target="_blank"><button class="button button--secondary secondary-button">Help</button></a>
   </div>
 </div>
 
@@ -193,6 +254,35 @@
     // show a message to the user
     alert("Copied to clipboard: " + value);
   };
+  document.getElementById("next-button-2").onclick = function (event) {
+  // get the number and filename values
+  const number = document.getElementById("number").value;
+  const filename = document.getElementById("filename").value;
+  document.getElementById("step-2").style.display = "none";
+  // set the innerHTML of the theme-value element to the number + filename value or just the filename if the number does not exist
+  document.getElementById("filename-value").innerHTML = number ? `${number} ${filename}` : filename;
+  
+  // show the third step
+  document.getElementById("step-3").style.display = "block";
+};
+document.getElementById("filename-value").onclick = function () {
+  // create a temporary input element
+  let input = document.createElement("input");
+  // get the value of the filename-value element
+  let value = document.getElementById("filename-value").innerHTML;
+  // set the value of the input element to the value of the filename-value element
+  input.setAttribute("value", value);
+  // append the input element to the body
+  document.body.appendChild(input);
+  // select the input element
+  input.select();
+  // copy the selected text to the clipboard
+  document.execCommand("copy");
+  // remove the input element from the body
+  document.body.removeChild(input);
+  // show a message to the user
+  alert("Copied to clipboard: " + value);
+};
 
   document.getElementById("generate").onclick = function (event) {
     const inputValue = document.getElementById("filename").value;
