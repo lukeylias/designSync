@@ -14,10 +14,11 @@ Essenitally this means we will automate as much as we can and help guide the use
 
 
 ## To-do
-– Close button to work
+- Hook up close button
 - Better styling for the UI
 - Enhancments to the HTML after pages are generated
 - Overall improvements
+- Touch area for copy to clipboard
 
 
 ## How it works
