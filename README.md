@@ -3,7 +3,7 @@ Insert gif or link to demo
 
 # designSync – Stacks Figma plugin
 ## Summary
-DesignSync is a Figma plugin for designers to help standardise and organise their design files for developer handoff.
+DesignSync is a Figma plugin for designers to help standardise and organise their design files for developer handoff and better overall navigation and discoverability.
 
 ## Notes
 
