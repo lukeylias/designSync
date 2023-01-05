@@ -1,7 +1,9 @@
-![read me cover](cover.jpg)
+<img src="cover.jpg">
 
 # designSync – Stacks Figma plugin
+
 ## Summary
+
 DesignSync is a Figma plugin for designers to help standardise and organise their design files for developer handoff and better overall navigation and discoverability.
 
 ## Notes
@@ -11,14 +13,13 @@ Also, we can't move files. So again, the user has to manually move the file to t
 
 Essenitally this means we will automate as much as we can and help guide the user to rename and move their file.
 
-
 ## To-do
+
 - Hook up close button
 - Better styling for the UI
 - Enhancments to the HTML after pages are generated
 - Overall improvements
 - Touch area for copy to clipboard
-
 
 ## How it works
 
@@ -43,20 +44,18 @@ First, download Node.js which comes with NPM. This will allow you to install Typ
 
 Next, install TypeScript using the command:
 
-- ``npm install -g typescript``
+- `npm install -g typescript`
 
 Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
 
-- ``npm install --save-dev @figma/plugin-typings``
-
+- `npm install --save-dev @figma/plugin-typings`
 
 Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js) for the browser to run.
 Open this directory in Visual Studio Code.
-Compile TypeScript to JavaScript: 
-- Run the ```"Terminal > Run Build Task"``` menu item, then select ``"npm: watch"``.
+Compile TypeScript to JavaScript:
 
-    
+- Run the `"Terminal > Run Build Task"` menu item, then select `"npm: watch"`.
+
 ## Feedback
 
 If you have any feedback, please reach out @lukeylias on Slack
-
