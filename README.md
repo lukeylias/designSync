@@ -1,5 +1,4 @@
-Insert gif or link to demo
-
+![read me cover](cover.jpg)
 
 # designSync – Stacks Figma plugin
 ## Summary
