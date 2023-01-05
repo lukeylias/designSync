@@ -1,4 +1,4 @@
-<img src="cover.jpg">
+![Design sync cover](https://github.com/lukeylias/designSync/blob/main/assets/cover.jpg)
 
 # designSync – Stacks Figma plugin
 
