@@ -6,6 +6,8 @@
 
 DesignSync is a Figma plugin for designers to help standardise and organise their design files for developer handoff and better overall navigation and discoverability.
 
+https://github.com/lukeylias/designSync/assets/58713241/2f6e13e7-8510-49a8-92bd-164ed285552e
+
 ## Notes
 
 Unfortunatly Figma APIs don't allow us to target the filename (readonly). This means the user has to manually overide the filename.
